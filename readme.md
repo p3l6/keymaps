@@ -14,10 +14,7 @@ On build, files from this repository are copied into the submodule, and a standa
 
 # Installing firmware
 ## Dz60
-* Build firmware as normal `make dz60:pwxn` (in qmk_firmware directory)
-* Hit reset key on bottom of board
-* Flash with command `make dz60:pwxn:dfu` (in qmk_firmware directory)
-* No eject needed, ready to use!
+`make install-dz60`, then hit reset key on bottom of board
 
 ## Ca66
 Plug in ca66 while holding ESC, then run

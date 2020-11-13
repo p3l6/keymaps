@@ -1,4 +1,4 @@
-.PHONY: fresh rsync
+.PHONY: fresh rsync install-dz60
 
 all: rsync hex/ca66.hex hex/dz60.hex hex/tada68.bin hex/tada68-hhkb.bin
 
@@ -28,6 +28,9 @@ hex/tada68-hhkb.bin: tada68-hhkb/* common/*
 	make -C qmk_firmware tada68:pwxn-hhkb
 	mkdir -p hex
 	cp qmk_firmware/tada68_pwxn-hhkb.bin hex/tada68-hhkb.bin
+
+install-dz60: hex/dz60.hex
+	make -C qmk_firmware dz60:pwxn:dfu
 
 # TODO:
 # make 40percentclub/foobarMacro:default
