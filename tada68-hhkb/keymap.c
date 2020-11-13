@@ -16,7 +16,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NL] = LAYOUT_65_ansi_split_backspace_hack(
     KC_ESC,  __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,
-    KC_ENT,  __xxx__, KC_UP,   D_EXPOS, __xxx__, D_SPC_L, D_SPC_R, __xxx__, KC_UP,   __xxx__, KC_PGUP, KC_HOME, __xxx__, KC_DEL,           __xxx__,
+    KC_ENT,  __xxx__, KC_UP,   D_EXPOS, D_NOTIF, D_SPC_L, D_SPC_R, __xxx__, KC_UP,   __xxx__, KC_PGUP, KC_HOME, __xxx__, KC_DEL,           __xxx__,
     _______, KC_LEFT, KC_DOWN, KC_RGHT, __xxx__, D_TAB_L, D_TAB_R, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_END,           KC_PENT,          __xxx__,
     _______, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,          __xxx__,          __xxx__,
     _______, _______, _______,                   _______,                            _______, _______, XXXXXXX, __xxx__, __xxx__, __xxx__),

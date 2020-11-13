@@ -10,6 +10,7 @@
 #define D_SPC_L LCTL(KC_LEFT)
 #define D_SPC_R LCTL(KC_RGHT)
 #define D_EXPOS LCTL(KC_UP)
+#define D_NOTIF LCTL(KC_F10)
 #define D_HIDE  LGUI(KC_H)
 #define D_DBG_C KC_F16
 #define D_DBG_N KC_F17
