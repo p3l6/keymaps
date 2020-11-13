@@ -24,12 +24,12 @@ Then plug in again
 ## Tada68
 * `make tada68:pwxn` (in qmk_firmware directory)
 * hit reset key.
-* I now have a shortcut: `flashTada hex/tada68.bin`
+* I now have a shortcut: `flashTada hex/tada68-hhkb.bin`
 * Alternatively:
 	* replace flash.bin file on mounted storage, keep naming the same.
 	* remove any files that mac added.
 	* eject volume, replug keyboard. (use escape key on keyboard to force eject)
-* To flash when theres only one keyboard: `sleep 10 && flashTada hex/tada68.bin` will give enough time to reset it
+* To flash when theres only one keyboard: `sleep 10 && flashTada hex/tada68-hhkb.bin` will give enough time to reset it
 
 ## Teensy installing
 use teensy loader while in bootloader mode (either with soft reset or button on teensy)
