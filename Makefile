@@ -1,6 +1,6 @@
 .PHONY: fresh rsync install-dz60
 
-all: rsync hex/ca66.hex hex/dz60.hex hex/tada68.bin hex/tada68-hhkb.bin
+all: rsync hex/ca66.hex hex/dz60.hex hex/tada68.bin hex/tada68-hhkb.bin hex/macropad-work.hex
 
 rsync:
 	rsync -rut --delete common/ qmk_firmware/users/pwxn
@@ -8,6 +8,7 @@ rsync:
 	rsync -rut --delete dz60/ qmk_firmware/keyboards/dz60/keymaps/pwxn
 	rsync -rut --delete tada68/ qmk_firmware/keyboards/tada68/keymaps/pwxn
 	rsync -rut --delete tada68-hhkb/ qmk_firmware/keyboards/tada68/keymaps/pwxn-hhkb
+	rsync -rut --delete macropad/work/ qmk_firmware/keyboards/40percentclub/foobar/keymaps/work
 
 hex/ca66.hex: ca66/* common/*
 	make -C qmk_firmware playkbtw/ca66:pwxn
@@ -29,11 +30,15 @@ hex/tada68-hhkb.bin: tada68-hhkb/* common/*
 	mkdir -p hex
 	cp qmk_firmware/tada68_pwxn-hhkb.bin hex/tada68-hhkb.bin
 
+hex/macropad-work.hex: macropad/work/* common/*
+	make -C qmk_firmware 40percentclub/foobar:work
+	mkdir -p hex
+	cp qmk_firmware/40percentclub_foobar_work.hex hex/macropad-work.hex
+
 install-dz60: hex/dz60.hex
 	make -C qmk_firmware dz60:pwxn:dfu
 
 # TODO:
-# make 40percentclub/foobarMacro:default
 # make 40percentclub/foobarMacro:diablo
 # make 40percentclub/gherkin:ePipes
 # make paulKeyboard:default
