@@ -29,6 +29,7 @@ enum custom_keycodes {
     Z_SFRMT,
     Z_PARAM,
     Z_JSSTR,
+    Z_ALTTB,
 };
 
 #define DEF_NSSTR SEND_STRING("NSString*");
@@ -44,5 +45,22 @@ enum custom_keycodes {
 #define DEF_JSSTR SEND_STRING("``"SS_TAP(X_LEFT)"${}"SS_TAP(X_LEFT));
 
 #define CASE(macro) case Z_##macro: DEF_##macro return false; break;
+
+#define ALT_TAB_DELAY 750  // 0.75 s
+#define ALT_TAB_INIT uint16_t altTabTimer = 0;
+#define ALT_TAB_PROC_REC if (keycode == Z_ALTTB) { \
+  if (record->event.pressed) { \
+    if (altTabTimer == 0) register_code(KC_RGUI); \
+    register_code(KC_TAB); \
+  } else { \
+    altTabTimer = timer_read(); \
+    unregister_code(KC_TAB); \
+  } return false; }
+
+#define ALT_TAB_MATRIX_SCAN if \
+  (altTabTimer && timer_elapsed(altTabTimer) >= ALT_TAB_DELAY) { \
+    unregister_code(KC_RGUI); \
+    altTabTimer = 0; \
+  }
 
 #endif
