@@ -17,8 +17,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FL] = LAYOUT_ansi(
   KC_ESC, KC_F1 ,KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,    KC_GRV,         KC_HOME ,  \
   KC_BSPC,KC_SLCK, KC_PAUS,LCTL(KC_UP),KC_F13,BL_TOGG,BL_DEC,BL_INC,_______,_______,Z_PRINT,Z_STCMT,Z_ENCMT, Z_SFRMT, KC_END, \
-  _______,KC_MUTE, KC_VOLD, KC_VOLU, LGUI(LSFT(KC_LBRC)),LCTL(KC_LEFT),LCTL(KC_RGHT),LGUI(LSFT(KC_RBRC)),_______,Z_NSLOG,Z_PARAM, Z_ATQOT,    KC_PENT,    _______, \
-  KC_CAPS,KC_MRWD, KC_MPLY, KC_MFFD, _______,_______,Z_NSSTR,_______,_______,Z_ARROW,_______,         KC_BTN1,KC_MS_U,KC_BTN2, \
+  _______,KC_MUTE, KC_VOLD, KC_VOLU, LGUI(LSFT(KC_LBRC)),LCTL(KC_LEFT),LCTL(KC_RGHT),LGUI(LSFT(KC_RBRC)),_______,__xxx__,__xxx__, __xxx__,    KC_PENT,    _______, \
+  KC_CAPS,KC_MRWD, KC_MPLY, KC_MFFD, _______,_______,__xxx__,_______,_______,Z_ARROW,_______,         KC_BTN1,KC_MS_U,KC_BTN2, \
   _______,_______, _______,                          KC_ENT,     _______,  KC_NO,  KC_NO,         KC_MS_L,KC_MS_D,KC_MS_R),
 
 [_NL] = LAYOUT_ansi(
@@ -34,8 +34,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // See https://docs.qmk.fm/macros.html
   if (record->event.pressed) {
     switch(keycode) {
-      CASE(NSSTR) CASE(NSLOG)
-      CASE(ATQOT) CASE(PRINT) CASE(SFRMT) CASE(PARAM) CASE(JSSTR)
+      CASE(PRINT) CASE(SFRMT) CASE(JSSTR)
       CASE(ARROW) CASE(LGARW)
       CASE(STCMT) CASE(ENCMT)
     }

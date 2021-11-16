@@ -39,8 +39,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	// See https://docs.qmk.fm/macros.html
   if (record->event.pressed) {
     switch(keycode) {
-      CASE(NSSTR) CASE(NSLOG)
-      CASE(ATQOT) CASE(PRINT) CASE(SFRMT) CASE(PARAM) CASE(JSSTR)
+      CASE(PRINT) CASE(SFRMT) CASE(JSSTR)
       CASE(ARROW) CASE(LGARW)
       CASE(STCMT) CASE(ENCMT)
     }
