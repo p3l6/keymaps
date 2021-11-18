@@ -2,6 +2,8 @@
 
 all: hex/ca66.hex hex/dz60.hex hex/tada68.bin hex/tada68-hhkb.bin hex/macropad-work.hex
 
+export QMK_HOME='./qmk_firmware'
+
 hex/ca66.hex: ca66/* common/*
 	rsync -rut --delete common/ qmk_firmware/users/pwxn
 	rsync -rut --delete ca66/ qmk_firmware/keyboards/playkbtw/ca66/keymaps/pwxn
@@ -53,4 +55,7 @@ install-dz60: hex/dz60.hex
 fresh:
 	git submodule init
 	git submodule update
+	python3 -m pip install -r qmk_firmware/requirements.txt
+	# maybe setting the env var above is enough, might not need setup
+	qmk_firmware/bin/qmk setup -H qmk_firmware
 	make -C qmk_firmware git-submodule

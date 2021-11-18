@@ -47,8 +47,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-#define HSV_OFF 0,   0,   0
-
 void led_set_user(uint8_t usb_led) {
   bool caps = (usb_led & (1 << USB_LED_CAPS_LOCK)) ;
   bool nav = (layer_state & (1<<_NL));

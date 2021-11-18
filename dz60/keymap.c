@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),[_NAV] = LAYOUT_60_ansi_split_bs_rshift(
 
     KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
-    _______, KC_LGUI, D_EXPOS, KC_UP,   Z_ALTTB, D_SPC_L, D_SPC_R, __xxx__, KC_UP,   __xxx__, KC_PGUP, KC_HOME, __xxx__, _______,
+    _______, KC_LGUI, Z_ALTTB, KC_UP,   D_EXPOS, D_SPC_L, D_SPC_R, __xxx__, KC_UP,   __xxx__, KC_PGUP, KC_HOME, __xxx__, _______,
     KC_BSPC, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_TAB_L, D_TAB_R, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_END,           KC_PENT,
     _______, D_SUBWD, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,          _______, __xxx__,
     XXXXXXX, _______, _______,                            _______,                   XXXXXXX, _______, _______, XXXXXXX
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 ),[_MEDIA] = LAYOUT_60_ansi_split_bs_rshift(
 
-    KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_F13, KC_F14,
+    RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_F13, KC_F14,
     __xxx__, D_BRT_D, D_BRT_U, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,
     __xxx__, KC_MUTE, KC_VOLD, KC_VOLU, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,          __xxx__,
     KC_CAPS, KC_MRWD, KC_MPLY, KC_MFFD, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,          _______, _______,
