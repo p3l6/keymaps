@@ -25,15 +25,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
     _______, KC_LGUI, Z_ALTTB, KC_UP,   D_EXPOS, D_SPC_L, D_SPC_R, __xxx__, KC_UP,   __xxx__, KC_PGUP, KC_HOME, __xxx__, _______,
     KC_BSPC, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_TAB_L, D_TAB_R, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_END,           KC_PENT,
-    _______, D_SUBWD, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,          _______, __xxx__,
+    KC_LSFT, D_SUBWD, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,          KC_RSFT, __xxx__,
     XXXXXXX, _______, _______,                            _______,                   XXXXXXX, _______, _______, XXXXXXX
 
 ),[_SYMBL] = LAYOUT_60_ansi_split_bs_rshift(
 
     KC_ESC,  __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
     _______, __xxx__, __xxx__, D_LIN_U, D_CUR_U, __xxx__, KC_HASH, KC_EXLM, KC_EQL,  KC_PLUS, __xxx__, Z_STCMT, Z_ENCMT, _______,
-    __xxx__, __xxx__, __xxx__, D_LIN_D, D_CUR_D, __xxx__, KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, __xxx__, Z_SFRMT,          KC_PENT,
-    _______, __xxx__, __xxx__, D_COPY,  D_PASTE, __xxx__, KC_AMPR, KC_DLR,  __xxx__, Z_ARROW, KC_BSLS,          _______, __xxx__,
+    _______, __xxx__, __xxx__, D_LIN_D, D_CUR_D, __xxx__, KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, __xxx__, Z_SFRMT,          KC_PENT,
+    KC_LSFT, __xxx__, __xxx__, D_COPY,  D_PASTE, __xxx__, KC_AMPR, KC_DLR,  __xxx__, Z_ARROW, KC_BSLS,          _______, __xxx__,
     XXXXXXX, __xxx__, __xxx__,                            _______,                   XXXXXXX, __xxx__, __xxx__, XXXXXXX
 
 ),[_MEDIA] = LAYOUT_60_ansi_split_bs_rshift(

@@ -1,51 +1,75 @@
-.PHONY: fresh rsync install-dz60
-
-all: hex/ca66.hex hex/dz60.hex hex/tada68.bin hex/tada68-hhkb.bin hex/macropad-work.hex
-
+.PHONY: fresh clean flash-dz60
 export QMK_HOME='./qmk_firmware'
 
-hex/ca66.hex: ca66/* common/*
-	rsync -rut --delete common/ qmk_firmware/users/pwxn
-	rsync -rut --delete ca66/ qmk_firmware/keyboards/playkbtw/ca66/keymaps/pwxn
+HEX_BOARDS=ca66 dz60 macropad-work
+BIN_BOARDS=tada68 tada68-hhkb
 
-	make -C qmk_firmware playkbtw/ca66:pwxn
-	mkdir -p hex
-	cp qmk_firmware/playkbtw_ca66_pwxn.hex hex/ca66.hex
+BOARDS=$(BIN_BOARDS) $(BIN_BOARDS)
+HEXES=$(patsubst %, hex/%.hex, $(HEX_BOARDS))
+BINS=$(patsubst %, hex/%.bin, $(BIN_BOARDS))
+all: $(HEXES) $(BINS)
 
-hex/dz60.hex: dz60/* common/*
-	rsync -rut --delete common/ qmk_firmware/users/pwxn
-	rsync -rut --delete dz60/ qmk_firmware/keyboards/dz60/keymaps/pwxn
+COMMON = $(patsubst common/%, qmk_firmware/users/pwxn/%, $(wildcard common/*))
+qmk_firmware/users/pwxn/%: common/%
+	@mkdir -p $(@D)
+	cp $< $@
 
+
+DZ60 = $(patsubst dz60/%, qmk_firmware/keyboards/dz60/keymaps/pwxn/%, $(wildcard dz60/*))
+qmk_firmware/keyboards/dz60/keymaps/pwxn/%: dz60/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/dz60.hex: $(DZ60) $(COMMON) | hex
 	make -C qmk_firmware dz60:pwxn
-	mkdir -p hex
-	cp qmk_firmware/dz60_pwxn.hex hex/dz60.hex
-
-hex/tada68.bin: tada68/* common/*
-	rsync -rut --delete common/ qmk_firmware/users/pwxn
-	rsync -rut --delete tada68/ qmk_firmware/keyboards/tada68/keymaps/pwxn
-
-	make -C qmk_firmware tada68:pwxn
-	mkdir -p hex
-	cp qmk_firmware/tada68_pwxn.bin hex/tada68.bin
-
-hex/tada68-hhkb.bin: tada68-hhkb/* common/*
-	rsync -rut --delete common/ qmk_firmware/users/pwxn
-	rsync -rut --delete tada68-hhkb/ qmk_firmware/keyboards/tada68/keymaps/pwxn-hhkb
-
-	make -C qmk_firmware tada68:pwxn-hhkb
-	mkdir -p hex
-	cp qmk_firmware/tada68_pwxn-hhkb.bin hex/tada68-hhkb.bin
-
-hex/macropad-work.hex: macropad/work/* common/*
-	rsync -rut --delete common/ qmk_firmware/users/pwxn
-	rsync -rut --delete macropad/work/ qmk_firmware/keyboards/40percentclub/foobar/keymaps/work
-
-	make -C qmk_firmware 40percentclub/foobar:work
-	mkdir -p hex
-	cp qmk_firmware/40percentclub_foobar_work.hex hex/macropad-work.hex
-
-install-dz60: hex/dz60.hex
+	cp qmk_firmware/dz60_pwxn.hex $@
+flash-dz60: hex/dz60.hex
 	make -C qmk_firmware dz60:pwxn:dfu
+
+
+CA66 = $(patsubst ca66/%, qmk_firmware/keyboards/playkbtw/ca66/keymaps/pwxn/%, $(wildcard ca66/*))
+qmk_firmware/keyboards/playkbtw/ca66/keymaps/pwxn/%: ca66/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/ca66.hex: $(CA66) $(COMMON) | hex
+	make -C qmk_firmware playkbtw/ca66:pwxn
+	cp qmk_firmware/playkbtw_ca66_pwxn.hex $@
+
+
+TADA = $(patsubst tada68/%, qmk_firmware/keyboards/tada68/keymaps/pwxn/%, $(wildcard tada68/*))
+qmk_firmware/keyboards/tada68/keymaps/pwxn/%: tada68/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/tada68.bin: $(TADA) $(COMMON) | hex
+	make -C qmk_firmware tada68:pwxn
+	cp qmk_firmware/tada68_pwxn.bin $@
+
+
+TADA-HHKB = $(patsubst tada68-hhkb/%, qmk_firmware/keyboards/tada68/keymaps/pwxn-hhkb/%, $(wildcard tada68-hhkb/*))
+qmk_firmware/keyboards/tada68/keymaps/pwxn-hhkb/%: tada68-hhkb/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/tada68-hhkb.bin: $(TADA-HHKB) $(COMMON) | hex
+	make -C qmk_firmware tada68:pwxn-hhkb
+	cp qmk_firmware/tada68_pwxn-hhkb.bin $@
+
+
+WORK = $(patsubst macropad/work/%, qmk_firmware/keyboards/40percentclub/foobar/keymaps/work/%, $(wildcard macropad/work/*))
+qmk_firmware/keyboards/40percentclub/foobar/keymaps/work/%: macropad/work/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/macropad-work.hex: $(WORK) $(COMMON) | hex
+	make -C qmk_firmware 40percentclub/foobar:work
+	cp qmk_firmware/40percentclub_foobar_work.hex $@
+
+
+
+hex:
+	mkdir -p hex
+
+clean:
+	rm -rf hex
+	rm -rf $(COMMON) $(CA66) $(DZ60) $(TADA) $(TADA-HHKB) $(WORK)
+	make -C qmk_firmware clean
 
 # TODO:
 # make 40percentclub/foobarMacro:diablo
