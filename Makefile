@@ -1,7 +1,7 @@
 .PHONY: fresh clean flash-dz60
 export QMK_HOME='./qmk_firmware'
 
-HEX_BOARDS=ca66 dz60 macropad-work
+HEX_BOARDS=ca66 dz60 macropad-work bmek
 BIN_BOARDS=tada68 tada68-hhkb
 
 BOARDS=$(BIN_BOARDS) $(BIN_BOARDS)
@@ -13,6 +13,17 @@ COMMON = $(patsubst common/%, qmk_firmware/users/pwxn/%, $(wildcard common/*))
 qmk_firmware/users/pwxn/%: common/%
 	@mkdir -p $(@D)
 	cp $< $@
+
+
+BMEK = $(patsubst bmek/%, qmk_firmware/keyboards/bemeier/bmek/keymaps/pwxn/%, $(wildcard bmek/*))
+qmk_firmware/keyboards/bemeier/bmek/keymaps/pwxn/%: bmek/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/bmek.hex: $(BMEK) $(COMMON) | hex
+	make -C qmk_firmware bemeier/bmek/rev3:pwxn
+	cp qmk_firmware/bemeier_bmek_rev3_pwxn.hex $@
+flash-bmek: hex/bmek.hex
+	make -C qmk_firmware bemeier/bmek/rev3:pwxn:dfu
 
 
 DZ60 = $(patsubst dz60/%, qmk_firmware/keyboards/dz60/keymaps/pwxn/%, $(wildcard dz60/*))
