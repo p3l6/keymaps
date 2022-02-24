@@ -16,6 +16,9 @@ On build, files from this repository are copied into the submodule, and a standa
 ## Dz60
 `make flash-dz60`, then hit reset key on bottom of board
 
+## Bmek, tokyo60
+`make flash-bmek`, then hit reset key command (media + esc)
+
 ## Ca66
 Plug in ca66 while holding ESC, then run
 `bootloadHID hex/ca66.hex`
@@ -31,10 +34,10 @@ Then plug in again
 	* eject volume, replug keyboard. (use escape key on keyboard to force eject)
 * To flash when theres only one keyboard: `sleep 10 && flashTada hex/tada68-hhkb.bin` will give enough time to reset it
 
-## Teensy installing
+## Teensy
 use teensy loader while in bootloader mode (either with soft reset or button on teensy)
 
-## Pro micro
+## Pro micros
 `flashProMicro hex/work_macropad.hex <num>`
 run first command twice to find the tty that is added after shorting the pins
 ```

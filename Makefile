@@ -1,7 +1,7 @@
 .PHONY: fresh clean flash-dz60
 export QMK_HOME='./qmk_firmware'
 
-HEX_BOARDS=ca66 dz60 macropad-work bmek
+HEX_BOARDS=ca66 dz60 macropad-work bmek tokyo60
 BIN_BOARDS=tada68 tada68-hhkb
 
 BOARDS=$(BIN_BOARDS) $(BIN_BOARDS)
@@ -24,6 +24,17 @@ hex/bmek.hex: $(BMEK) $(COMMON) | hex
 	cp qmk_firmware/bemeier_bmek_rev3_pwxn.hex $@
 flash-bmek: hex/bmek.hex
 	make -C qmk_firmware bemeier/bmek/rev3:pwxn:dfu
+
+
+TOKYO60 = $(patsubst tokyo60/%, qmk_firmware/keyboards/tokyokeyboard/tokyo60/keymaps/pwxn/%, $(wildcard tokyo60/*))
+qmk_firmware/keyboards/tokyokeyboard/tokyo60/keymaps/pwxn/%: tokyo60/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/tokyo60.hex: $(TOKYO60) $(COMMON) | hex
+	make -C qmk_firmware tokyokeyboard/tokyo60:pwxn
+	cp qmk_firmware/tokyokeyboard_tokyo60_pwxn.hex $@
+flash-tokyo60: hex/tokyo60.hex
+	make -C qmk_firmware tokyokeyboard/tokyo60:pwxn:dfu
 
 
 DZ60 = $(patsubst dz60/%, qmk_firmware/keyboards/dz60/keymaps/pwxn/%, $(wildcard dz60/*))
