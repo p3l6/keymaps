@@ -31,9 +31,9 @@ __xxx__, KC_LSFT, KC_LGUI, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O,         _______, 
 ),[_SYMBL] = LAYOUT_hhkb(
 
 __xxx__, KC_ESC,  __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
-__xxx__, _______, __xxx__, __xxx__, D_LIN_U, D_CUR_U, __xxx__,                  KC_HASH, KC_EXLM, KC_EQL,  KC_PLUS, __xxx__, Z_STCMT, Z_ENCMT, _______,
-__xxx__, _______, __xxx__, __xxx__, D_LIN_D, D_CUR_D, __xxx__,                  KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, __xxx__, Z_SFRMT,          KC_PENT,
-__xxx__, KC_LSFT, __xxx__, __xxx__, D_COPY,  D_PASTE, __xxx__,         _______, KC_AMPR, KC_DLR,  __xxx__, Z_ARROW, KC_BSLS,          _______, __xxx__,
+__xxx__, _______, __xxx__, __xxx__, D_LIN_U, D_CUR_U, __xxx__,                  KC_HASH, KC_EXLM, KC_EQL,  KC_PLUS, Z_SFRMT, Z_STCMT, Z_ENCMT, _______,
+__xxx__, _______, __xxx__, __xxx__, D_LIN_D, D_CUR_D, __xxx__,                  KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, KC_ASTR, KC_GRV,           KC_PENT,
+__xxx__, KC_LSFT, __xxx__, __xxx__, D_COPY,  D_PASTE, __xxx__,         Z_MTODO, KC_AMPR, KC_DLR,  KC_TILD, Z_ARROW, KC_BSLS,          _______, __xxx__,
                   __xxx__, __xxx__,          KC_SPC,                   _______,          __xxx__, __xxx__
 
 ),[_MEDIA] = LAYOUT_hhkb(
@@ -59,6 +59,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       CASE(PRINT) CASE(SFRMT) CASE(JSSTR)
       SHIFTED_CASE(ARROW, LGARW)
       CASE(STCMT) CASE(ENCMT)
+      CASE(MTODO)
     }
   }
   return true;

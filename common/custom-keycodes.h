@@ -41,6 +41,7 @@ enum custom_keycodes {
     Z_SFRMT,
     Z_JSSTR,
     Z_ALTTB,
+    Z_MTODO,
 };
 
 #define DEF_PRINT SEND_STRING("print(\"\")"SS_TAP(X_LEFT)SS_TAP(X_LEFT));
@@ -50,6 +51,7 @@ enum custom_keycodes {
 #define DEF_ENCMT SEND_STRING("*/");
 #define DEF_SFRMT SEND_STRING("\\()"SS_TAP(X_LEFT));
 #define DEF_JSSTR SEND_STRING("``"SS_TAP(X_LEFT)"${}"SS_TAP(X_LEFT));
+#define DEF_MTODO SEND_STRING("- [ ] ");
 
 #define CASE(macro) case Z_##macro: DEF_##macro return false; break;
 #define SHIFTED_CASE(macro, shifted_macro) case Z_##macro: ; const uint8_t mods = get_mods(); \
