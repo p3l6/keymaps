@@ -65,15 +65,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-// void led_set_user(uint8_t usb_led) {
-	// if ( (usb_led & (1<<USB_LED_CAPS_LOCK)) || (layer_state & (1<<_NAV)) || (layer_state & (1<<_MEDIA)) ) {
-  //     // Turn capslock on
-  //     writePinLow(B2);
-  // } else {
-  //     // Turn capslock off
-  //     writePinHigh(B2);
-  // }
-// }
+
+// TODO Maybe switch to: https://beta.docs.qmk.fm/using-qmk/hardware-features/lighting/feature_rgblight#defining-lighting-layers-id-defining-lighting-layers
+
+// TODO solve caps_word to behave the same as caps lock
+//      tried adding an accessor for the static var,
+//      but somehow need to trigger a refresh when it activates
+void led_set_user(uint8_t usb_led) {
+  uint8_t mode =
+    (layer_state & (1<<_NAV)) ? 1 : // Nav
+    (layer_state & (1<<_SYMBL)) ? 2 : // Symb
+    (layer_state & (1<<_MEDIA)) ? 3 : // Media
+    (usb_led & (1 << USB_LED_CAPS_LOCK)) ? 4 : // Caps
+    0;  // Off
+
+  uint8_t hue_pallets[][6] = {
+  //    0    1    2    3    4    5       LED layout:   5 4 3   (bottom row keys)   0 1 2
+    {   0,   0,   0,   0,   0,   0 }, // Off
+    { 150,  25, 150, 150,  25, 150 }, // Nav
+    { 135, 215,  85, 135, 215,  85 }, // Symb
+    {  45,   0,   0,   0,  45,  45 }, // Media
+    { 200,   0,   0, 200,   0,   0 }, // Caps
+  };
+
+  if ( mode ) { rgblight_enable_noeeprom(); rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); } else { rgblight_disable_noeeprom(); return; }
+  for (int i = 0; i < 6; i++){
+    if(hue_pallets[mode][i]) {
+      sethsv(hue_pallets[mode][i], 190, 190, (LED_TYPE *)&led[i]);
+    } else {
+      sethsv(HSV_OFF, (LED_TYPE *)&led[i]);
+    }
+  }
+
+  if ( mode ) { rgblight_set(); }
+
+  return;
+}
+
 
 void matrix_scan_user(void) {
   ALT_TAB_MATRIX_SCAN
