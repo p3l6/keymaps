@@ -103,3 +103,4 @@ fresh:
 	git submodule update
 	python3 -m pip install -r qmk_firmware/requirements.txt
 	make -C qmk_firmware git-submodule
+	qmk setup -H ./qmk_firmware
