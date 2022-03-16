@@ -25,12 +25,12 @@ D_ZOOM,  KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_UNDS, 
 __xxx__, KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, __xxx__, __xxx__,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
 __xxx__, _______, D_SUBWD, Z_ALTTB, KC_UP,   D_EXPOS, D_SPC_L,                  D_SPC_R, __xxx__, KC_UP,   __xxx__, KC_PGUP, KC_HOME, __xxx__, _______,
 __xxx__, KC_BSPC, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_TAB_L,                  D_TAB_R, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_END,           KC_PENT,
-__xxx__, KC_LSFT, KC_LGUI, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O,         _______, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,          KC_RSFT, __xxx__,
+__xxx__, KC_LSFT, KC_LGUI, _______, _______, D_GRP_U, D_GRP_L,         D_GRP_R, D_GRP_D, __xxx__, __xxx__, __xxx__, __xxx__,          KC_RSFT, __xxx__,
                   _______, _______,          _______,                  _______,          _______, _______
 
 ),[_SYMBL] = LAYOUT_hhkb(
 
-__xxx__, KC_ESC,  __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
+__xxx__, KC_ESC,  D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, __xxx__, __xxx__,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
 __xxx__, _______, __xxx__, __xxx__, D_LIN_U, D_CUR_U, __xxx__,                  KC_HASH, KC_EXLM, KC_EQL,  KC_PLUS, Z_SFRMT, Z_STCMT, Z_ENCMT, _______,
 __xxx__, _______, __xxx__, __xxx__, D_LIN_D, D_CUR_D, __xxx__,                  KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, KC_ASTR, KC_GRV,           KC_PENT,
 __xxx__, KC_LSFT, __xxx__, __xxx__, D_COPY,  D_PASTE, __xxx__,         Z_MTODO, KC_AMPR, KC_DLR,  KC_TILD, Z_ARROW, KC_BSLS,          _______, __xxx__,
