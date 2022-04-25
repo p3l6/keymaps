@@ -47,6 +47,9 @@
 // Alfred triggers
 #define D_SLACK LALT(LCTL(KC_F1)) // alfred action to launch slack and send correct keycommand
 #define D_ZOOM  LALT(LCTL(KC_F2)) // alfred action to launch zoom and send correct keycommand
+#define D_ALF_X G(S(KC_X))
+#define D_ALF_C G(S(KC_C))
+#define D_ALF_V G(S(KC_V))
 
 enum custom_keycodes {
     Z_PRINT = SAFE_RANGE,
@@ -73,6 +76,9 @@ enum custom_keycodes {
 #define SHIFTED_CASE(macro, shifted_macro) case Z_##macro: ; const uint8_t mods = get_mods(); \
   if (mods & MOD_MASK_SHIFT) { del_mods(MOD_MASK_SHIFT);  DEF_##shifted_macro set_mods(mods); } \
   else { DEF_##macro } return false; break;
+
+#define OVERLOAD_MACRO(_1,_2,_3,_4,_5,NAME,...) NAME
+#define SEQ(...) OVERLOAD_MACRO(__VA_ARGS__, SEQ_FIVE_KEYS,SEQ_FOUR_KEYS,SEQ_THREE_KEYS,SEQ_TWO_KEYS,SEQ_ONE_KEY)(__VA_ARGS__)
 
 #define ALT_TAB_DELAY 750  // 0.75 s
 #define ALT_TAB_INIT uint16_t altTabTimer = 0;

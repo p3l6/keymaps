@@ -4,8 +4,9 @@
 
 #include "caps-word.h"
 
+bool caps_word_enabled = false;
+
 bool process_caps_word(uint16_t keycode, keyrecord_t* record) {
-  static bool caps_word_enabled = false;
   static bool shifted = false;
 
   if (!caps_word_enabled) {
@@ -16,6 +17,7 @@ bool process_caps_word(uint16_t keycode, keyrecord_t* record) {
       clear_oneshot_mods();
       shifted = false;
       caps_word_enabled = true;
+      led_set_user(host_keyboard_leds());
       return false;
     }
     return true;
@@ -60,6 +62,7 @@ bool process_caps_word(uint16_t keycode, keyrecord_t* record) {
 
   // Disable caps word.
   caps_word_enabled = false;
+  led_set_user(host_keyboard_leds());
   if (shifted) { unregister_code(KC_LSFT); }
   shifted = false;
   return true;
