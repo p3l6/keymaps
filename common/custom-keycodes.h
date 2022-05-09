@@ -44,6 +44,7 @@
 #define D_COPY  LGUI(KC_C)
 #define D_PASTE LGUI(KC_V)
 #define D_SUBWD LCTL(KC_LALT)
+#define D_SWAP  LCTL(KC_T)
 // Alfred triggers
 #define D_SLACK LALT(LCTL(KC_F1)) // alfred action to launch slack and send correct keycommand
 #define D_ZOOM  LALT(LCTL(KC_F2)) // alfred action to launch zoom and send correct keycommand

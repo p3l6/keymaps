@@ -52,8 +52,8 @@ __xxx__, KC_LSFT, KC_LGUI, D_ALF_X, D_ALF_C, D_ALF_V, _______,         _______, 
 ),[_SYMBL] = LAYOUT_hhkb(
 
 __xxx__, KC_ESC,  D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, KC_VOLD, KC_VOLU,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
-BASE_P,  _______, __xxx__, __xxx__, D_LIN_U, D_CUR_U, __xxx__,                  KC_PIPE, KC_EXLM, KC_EQL,  KC_PLUS, __xxx__, Z_STCMT, Z_ENCMT, _______,
-BASE_G,  _______, __xxx__, __xxx__, D_LIN_D, D_CUR_D, D_CUR_A,                  KC_HASH, KC_LCBR, KC_RCBR, KC_MINS, KC_ASTR, KC_GRV,           KC_PENT,
+BASE_P,  _______, __xxx__, __xxx__, D_LIN_U, D_CUR_U, D_SWAP,                   KC_PIPE, KC_EXLM, KC_MINS, KC_PLUS, __xxx__, Z_STCMT, Z_ENCMT, _______,
+BASE_G,  _______, __xxx__, __xxx__, D_LIN_D, D_CUR_D, D_CUR_A,                  KC_HASH, KC_LCBR, KC_EQL,  KC_RCBR, KC_ASTR, KC_GRV,           KC_PENT,
 BASE_B,  KC_LSFT, __xxx__, D_LIN_X, D_LIN_N, D_CUR_N, __xxx__,         __xxx__, KC_AMPR, KC_DLR,  KC_TILD, Z_ARROW, KC_BSLS,          _______, __xxx__,
                   __xxx__, __xxx__,          KC_SPC,                   _______,          __xxx__, __xxx__
 
