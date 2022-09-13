@@ -4,7 +4,7 @@
 
 #define _BASE 0
 #define _GRAV 1 // a secondary base layer that changes underscore -> grave accent
-#define _PLAIN 2 // a secondary base layer that hides all special functions
+#define _PLAIN 2 // a secondary base layer that hides most special functions, behind the fn key
 #define _NAV 3
 #define _SYMBL 4
 
@@ -35,18 +35,18 @@ _______, _______, _______, _______, _______, _______, _______,     LALT(KC_GRV),
 
 ),[_PLAIN] = LAYOUT_hhkb(
 
-__xxx__, KC_ESC,  _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______, _______, _______,
-__xxx__, _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______, _______, _______,
+KC_GRV,  KC_ESC,  _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______, _______, _______,
+_______, _______, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______, _______, _______,
 __xxx__, __xxx__, _______, _______, _______, _______, _______,                  _______, _______, _______, _______, _______, _______, _______,
-__xxx__, KC_LSFT, _______, _______, _______, _______, _______,          KC_DOT, _______, _______, _______, _______, _______,          KC_RSFT, DF(_BASE),
+KC_LCTL, KC_LSFT, _______, _______, _______, _______, _______,          KC_DOT, _______, _______, _______, _______, _______,          KC_RSFT, MO(_NAV),
                   _______, _______,          KC_SPC,                  _______,          _______, _______
 
 ),[_NAV] = LAYOUT_hhkb(
 
-RESET,   KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, __xxx__, __xxx__,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
-__xxx__, KC_DEL,  D_SUBWD, Z_ALTTB, KC_UP,   D_EXPOS, D_SPC_L,                  D_SPC_R, __xxx__, KC_UP,   __xxx__, KC_PGUP, KC_HOME, __xxx__, _______,
-__xxx__, KC_BSPC, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_TAB_L,                  D_TAB_R, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_END,           KC_PENT,
-__xxx__, KC_LSFT, KC_LGUI, D_ALF_X, D_ALF_C, D_ALF_V, _______,         _______, D_GRP_D, D_GRP_U, D_GRP_L, D_GRP_R, __xxx__,          KC_RSFT, __xxx__,
+RESET,   KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, KC_VOLD, KC_VOLU,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, KC_HOME, __xxx__, _______,
+BASE_B,  KC_DEL,  D_SUBWD, Z_ALTTB, KC_UP,   D_EXPOS, D_SPC_L,                  D_SPC_R, KC_WH_L, KC_UP,   KC_WH_R, KC_WH_U, KC_PGUP, __xxx__, _______,
+__xxx__, KC_BSPC, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_TAB_L,                  D_TAB_R, KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_D, KC_PGDN,           KC_PENT,
+__xxx__, KC_LSFT, KC_LGUI, D_ALF_X, D_ALF_C, D_ALF_V, _______,         _______, D_GRP_D, D_GRP_U, D_GRP_L, D_GRP_R, KC_END,          KC_RSFT, __xxx__,
                   _______, _______,          _______,                  _______,          _______, _______
 
 ),[_SYMBL] = LAYOUT_hhkb(
