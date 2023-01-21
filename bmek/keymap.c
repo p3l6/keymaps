@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "custom-keycodes.h"
-#include "caps-word.h"
 
 #define _BASE 0
 #define _GRAV 1 // a secondary base layer that changes underscore -> grave accent
@@ -20,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_hhkb(
 
-Z_ALTTB, KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,            KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,
+Z_ALTTB, QK_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,            KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,
 T_PLNXT, KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
 D_SLACK, LT_SYMB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_SCLN,          KC_ENT,
 D_ZOOM,  KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_UNDS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSPC, MO(_CODE),
@@ -44,7 +43,7 @@ KC_LCTL, KC_LSFT, _______, _______, _______, _______, _______,          KC_DOT, 
 
 ),[_NAV] = LAYOUT_hhkb(
 
-RESET,   KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, KC_VOLD, KC_VOLU,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______, __xxx__, _______,
+QK_BOOT, KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, KC_VOLD, KC_VOLU,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______, __xxx__, _______,
 BASE_B,  KC_BSPC, D_SUBWD, D_LIN_U, KC_UP,   D_EXPOS, D_CUR_U,                  D_SPC_L, D_SPC_R, KC_UP,   KC_HOME, KC_PGUP, _______, __xxx__, _______,
 __xxx__, KC_ENT,  KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_CUR_D,                  _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,           KC_PENT,
 __xxx__, KC_LSFT, KC_LGUI, D_LIN_D, D_SWAP,  D_ALF_V, D_CUR_N,         D_TAB_L, D_TAB_R, _______, _______, _______, KC_END,          KC_RSFT, __xxx__,
@@ -70,10 +69,9 @@ __xxx__, KC_LSFT, __xxx__, __xxx__, Z_SSHOT, __xxx__, __xxx__,         __xxx__, 
 
 ALT_TAB_INIT
 TAP_DANCE_INIT
-extern bool caps_word_enabled;
+bool caps_word_enabled = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_caps_word(keycode, record)) { return false; }
   ALT_TAB_PROC_REC
 
   if (record->event.pressed) {
@@ -126,4 +124,9 @@ void led_set_user(uint8_t usb_led) {
 
 void matrix_scan_user(void) {
   ALT_TAB_MATRIX_SCAN
+}
+
+void caps_word_set_user(bool active) {
+    caps_word_enabled = active;
+    led_set_user(host_keyboard_leds());
 }

@@ -30,7 +30,7 @@
 #define D_DBG_S KC_F18
 #define D_DBG_O KC_F19
 // Adjust brightness
-#define D_BRT_D KC_SLCK
+#define D_BRT_D KC_SCRL
 #define D_BRT_U KC_PAUS
 // Move lines, cursor, etc (vscode, xcode)
 #define D_LIN_U LALT(LSFT(KC_UP))
