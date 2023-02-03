@@ -45,7 +45,7 @@ KC_LCTL, KC_LSFT, _______, _______, _______, _______, _______,          KC_DOT, 
 
 QK_BOOT, KC_ESC,  D_SPC_1, D_SPC_2, D_SPC_3, D_SPC_4, KC_VOLD, KC_VOLU,         __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______, __xxx__, _______,
 BASE_B,  KC_BSPC, D_SUBWD, D_LIN_U, KC_UP,   D_EXPOS, D_CUR_U,                  D_SPC_L, D_SPC_R, KC_UP,   KC_HOME, KC_PGUP, _______, __xxx__, _______,
-__xxx__, KC_ENT,  KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_CUR_D,                  _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,           KC_PENT,
+__xxx__, KC_ENT,  KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_CUR_D,                  D_BACK,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,           KC_PENT,
 __xxx__, KC_LSFT, KC_LGUI, D_LIN_D, D_SWAP,  D_ALF_V, D_CUR_N,         D_TAB_L, D_TAB_R, _______, _______, _______, KC_END,          KC_RSFT, __xxx__,
                   _______, _______,          _______,                  _______,          _______, _______
 
@@ -80,6 +80,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       CASE(STCMT) CASE(ENCMT)
       CASE(SEL_W) CASE(DEL_W)
       CASE(SSHOT)
+      CASE(MTODO)
     }
   }
   return true;
