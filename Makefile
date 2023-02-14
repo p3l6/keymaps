@@ -1,7 +1,7 @@
 .PHONY: fresh clean flash-dz60
 export QMK_HOME='./qmk_firmware'
 
-HEX_BOARDS=ca66 dz60 macropad-work bmek tokyo60
+HEX_BOARDS=ca66 dz60 macropad-work bmek tokyo60 prime
 BIN_BOARDS=tada68 tada68-hhkb
 
 BOARDS=$(BIN_BOARDS) $(BIN_BOARDS)
@@ -13,6 +13,17 @@ COMMON = $(patsubst common/%, qmk_firmware/users/pwxn/%, $(wildcard common/*))
 qmk_firmware/users/pwxn/%: common/%
 	@mkdir -p $(@D)
 	cp $< $@
+
+
+PRIME = $(patsubst prime_e/%, qmk_firmware/keyboards/primekb/prime_e/keymaps/pwxn/%, $(wildcard prime_e/*))
+qmk_firmware/keyboards/primekb/prime_e/keymaps/pwxn/%: prime_e/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/prime.hex: $(PRIME) $(COMMON) | hex
+	qmk compile -kb primekb/prime_e/rgb -km pwxn
+	cp qmk_firmware/primekb_prime_e_rgb_pwxn.hex  $@
+flash-prime: hex/prime.hex
+	qmk flash -kb primekb/prime_e/rgb -km pwxn
 
 
 BMEK = $(patsubst bmek/%, qmk_firmware/keyboards/bemeier/bmek/keymaps/pwxn/%, $(wildcard bmek/*))
