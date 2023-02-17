@@ -2,12 +2,8 @@
 export QMK_HOME='./qmk_firmware'
 
 HEX_BOARDS=ca66 dz60 macropad-work bmek tokyo60 prime
-BIN_BOARDS=tada68 tada68-hhkb
-
-BOARDS=$(BIN_BOARDS) $(BIN_BOARDS)
 HEXES=$(patsubst %, hex/%.hex, $(HEX_BOARDS))
-BINS=$(patsubst %, hex/%.bin, $(BIN_BOARDS))
-all: $(HEXES) $(BINS)
+all: $(HEXES)
 
 COMMON = $(patsubst common/%, qmk_firmware/users/pwxn/%, $(wildcard common/*))
 qmk_firmware/users/pwxn/%: common/%
@@ -68,24 +64,6 @@ hex/ca66.hex: $(CA66) $(COMMON) | hex
 	cp qmk_firmware/playkbtw_ca66_pwxn.hex $@
 
 
-TADA = $(patsubst tada68/%, qmk_firmware/keyboards/tada68/keymaps/pwxn/%, $(wildcard tada68/*))
-qmk_firmware/keyboards/tada68/keymaps/pwxn/%: tada68/%
-	@mkdir -p $(@D)
-	cp $< $@
-hex/tada68.bin: $(TADA) $(COMMON) | hex
-	qmk compile -kb tada68 -km pwxn
-	cp qmk_firmware/tada68_pwxn.bin $@
-
-
-TADA-HHKB = $(patsubst tada68-hhkb/%, qmk_firmware/keyboards/tada68/keymaps/pwxn-hhkb/%, $(wildcard tada68-hhkb/*))
-qmk_firmware/keyboards/tada68/keymaps/pwxn-hhkb/%: tada68-hhkb/%
-	@mkdir -p $(@D)
-	cp $< $@
-hex/tada68-hhkb.bin: $(TADA-HHKB) $(COMMON) | hex
-	qmk compile -kb tada68 -km pwxn-hhkb
-	cp qmk_firmware/tada68_pwxn-hhkb.bin $@
-
-
 WORK = $(patsubst macropad/work/%, qmk_firmware/keyboards/40percentclub/foobar/keymaps/work/%, $(wildcard macropad/work/*))
 qmk_firmware/keyboards/40percentclub/foobar/keymaps/work/%: macropad/work/%
 	@mkdir -p $(@D)
@@ -95,19 +73,15 @@ hex/macropad-work.hex: $(WORK) $(COMMON) | hex
 	cp qmk_firmware/40percentclub_foobar_work.hex $@
 
 
-
 hex:
 	mkdir -p hex
 
+
 clean:
 	rm -rf hex
-	rm -rf $(COMMON) $(CA66) $(DZ60) $(TADA) $(TADA-HHKB) $(WORK)
+	rm -rf $(COMMON) $(CA66) $(DZ60) $(BMEK) $(PRIME) $(WORK)
 	make -C qmk_firmware clean
 
-# TODO:
-# make 40percentclub/foobarMacro:diablo
-# make 40percentclub/gherkin:ePipes
-# make paulKeyboard:default
 
 fresh:
 	git submodule init

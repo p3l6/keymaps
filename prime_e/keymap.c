@@ -40,7 +40,7 @@ _______, _______,                   _______, _______, _______,           _______
 
 
 ),[CODE] = LAYOUT(
-__xxx__, KC_VOLD, KC_VOLU, T_PLNXT, __xxx__, __xxx__,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, QK_BOOT, \
+__xxx__, __xxx__, __xxx__, T_PLNXT, KC_VOLD, KC_VOLU,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, QK_BOOT, \
 __xxx__, __xxx__, Z_SEL_W, Z_DEL_W, __xxx__, __xxx__,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, \
 __xxx__, __xxx__, __xxx__, Z_SSHOT, __xxx__, __xxx__, __xxx__,  __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, KC_CAPS,  \
 __xxx__, __xxx__,                   __xxx__, _______, __xxx__,           __xxx__,          __xxx__,          __xxx__    \
