@@ -62,7 +62,7 @@ BASE_B,  KC_LSFT, __xxx__, KC_BSLS, KC_LPRN, KC_RPRN, Z_ARROW,         KC_PERC, 
 __xxx__, KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,           KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_F13,  _______,
 __xxx__, _______, KC_VOLD, KC_VOLU, T_PLNXT, __xxx__, __xxx__,                  __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, _______,
 __xxx__, _______, __xxx__, Z_SEL_W, Z_DEL_W, __xxx__, __xxx__,                  __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__,          KC_PENT,
-__xxx__, KC_LSFT, __xxx__, __xxx__, Z_SSHOT, __xxx__, __xxx__,         __xxx__, __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O,          KC_CAPS, _______,
+__xxx__, KC_LSFT, __xxx__, __xxx__, D_SSHOT, __xxx__, __xxx__,         __xxx__, __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O,          KC_CAPS, _______,
                   __xxx__, __xxx__,          KC_SPC,                   _______,          __xxx__, __xxx__
 ),
 };
@@ -79,7 +79,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SHIFTED_CASE(ARROW, LGARW)
       CASE(STCMT) CASE(ENCMT)
       CASE(SEL_W) CASE(DEL_W)
-      CASE(SSHOT)
       CASE(MTODO)
     }
   }

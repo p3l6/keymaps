@@ -24,6 +24,8 @@
 #define D_EXPOS LCTL(KC_UP)
 #define D_NOTIF LCTL(KC_F10)
 #define D_HIDE  LGUI(KC_H)
+#define D_SSHOT LGUI(LSFT(KC_5))
+#define D_FORCQ LGUI(LALT(KC_ESC))
 // Debugging actions
 #define D_DBG_C KC_F16
 #define D_DBG_N KC_F17
@@ -65,7 +67,6 @@ enum custom_keycodes {
     Z_MTODO,
     Z_SEL_W,
     Z_DEL_W,
-    Z_SSHOT,
 };
 
 #define DEF_PRINT SEND_STRING("print(\"\")"SS_TAP(X_LEFT)SS_TAP(X_LEFT));
@@ -78,7 +79,6 @@ enum custom_keycodes {
 #define DEF_MTODO SEND_STRING("- [ ] ");
 #define DEF_SEL_W SEND_STRING(SS_LALT(SS_TAP(X_LEFT)SS_LSFT(SS_TAP(X_RIGHT))));
 #define DEF_DEL_W SEND_STRING(SS_LALT(SS_TAP(X_LEFT)SS_TAP(X_DEL)));
-#define DEF_SSHOT SEND_STRING(SS_LGUI(SS_LSFT("4")));
 
 #define CASE(macro) case Z_##macro: DEF_##macro return false; break;
 #define SHIFTED_CASE(macro, shifted_macro) case Z_##macro: ; const uint8_t mods = get_mods(); \

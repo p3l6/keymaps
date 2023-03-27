@@ -27,22 +27,22 @@ KC_LCTL, KC_LALT,                   KC_LGUI, _______, KC_SPC,            KC_RGUI
 
 ),[SYMB] = LAYOUT(
 KC_GRV,  KC_LT,   KC_GT,   KC_LBRC, KC_RBRC, Z_MTODO,           KC_AT,   KC_EXLM, KC_PIPE, KC_ASTR, KC_CIRC, _______, _______, \
-_______, __xxx__, KC_DLR,  KC_LCBR, KC_RCBR, __xxx__,           KC_HASH, KC_EQL,  KC_MINS, KC_PLUS, KC_GRV,  KC_PENT, \
+_______, KC_QUES, KC_DLR,  KC_LCBR, KC_RCBR, __xxx__,           KC_HASH, KC_EQL,  KC_MINS, KC_PLUS, KC_GRV,  KC_PENT, \
 KC_LSFT, __xxx__, KC_BSLS, KC_LPRN, KC_RPRN, Z_ARROW, KC_PERC,  KC_AMPR, KC_DLR,  KC_SCLN, KC_COLN, KC_BSLS, KC_RSFT,  \
 _______, _______,                   _______, _______, KC_SPC,            _______,          __xxx__,          __xxx__    \
 
 
 ),[NUM] = LAYOUT(
-KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, _______, \
-__xxx__, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_PENT, \
-KC_LSFT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   __xxx__,  __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, __xxx__,  \
+KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,              KC_F9,   KC_F10,  KC_F11,  KC_ASTR, __xxx__, _______, _______, \
+__xxx__, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,              __xxx__, __xxx__, KC_MINS, KC_PLUS, __xxx__, KC_PENT, \
+KC_LSFT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_F7,   KC_F8,   _______, _______, _______, __xxx__,  \
 _______, _______,                   _______, _______, _______,           _______,          _______,          __xxx__    \
 
 
 ),[CODE] = LAYOUT(
-__xxx__, __xxx__, __xxx__, T_PLNXT, KC_VOLD, KC_VOLU,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, QK_BOOT, \
+KC_ESC,  D_FORCQ, __xxx__, T_PLNXT, KC_VOLD, KC_VOLU,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, QK_BOOT, \
 __xxx__, __xxx__, Z_SEL_W, Z_DEL_W, __xxx__, __xxx__,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, \
-__xxx__, __xxx__, __xxx__, Z_SSHOT, __xxx__, __xxx__, __xxx__,  __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, KC_CAPS,  \
+__xxx__, __xxx__, __xxx__, D_SSHOT, __xxx__, __xxx__, __xxx__,  __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, KC_CAPS,  \
 __xxx__, __xxx__,                   __xxx__, _______, __xxx__,           __xxx__,          __xxx__,          __xxx__    \
 
 ),
@@ -57,7 +57,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SHIFTED_CASE(ARROW, LGARW)
       CASE(STCMT) CASE(ENCMT)
       CASE(SEL_W) CASE(DEL_W)
-      CASE(SSHOT)
       CASE(MTODO)
     }
   }
