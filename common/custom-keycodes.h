@@ -48,6 +48,9 @@
 #define D_SUBWD LCTL(KC_LALT)
 #define D_SWAP  LCTL(KC_T)
 #define D_BACK  LGUI(LCTL(KC_LEFT))
+#define D_FRWD  LGUI(LCTL(KC_RIGHT))
+#define D_GOTO  LGUI(LCTL(KC_J))
+#define D_SEL_W LGUI(LCTL(LSFT(KC_E)))
 // Alfred triggers
 #define D_SLACK LALT(LCTL(KC_F1)) // alfred action to launch slack and send correct keycommand
 #define D_ZOOM  LALT(LCTL(KC_F2)) // alfred action to launch zoom and send correct keycommand
@@ -65,8 +68,8 @@ enum custom_keycodes {
     Z_JSSTR,
     Z_ALTTB,
     Z_MTODO,
-    Z_SEL_W,
     Z_DEL_W,
+    Z_DLR_0,
 };
 
 #define DEF_PRINT SEND_STRING("print(\"\")"SS_TAP(X_LEFT)SS_TAP(X_LEFT));
@@ -77,8 +80,8 @@ enum custom_keycodes {
 #define DEF_SFRMT SEND_STRING("\\()"SS_TAP(X_LEFT));
 #define DEF_JSSTR SEND_STRING("``"SS_TAP(X_LEFT)"${}"SS_TAP(X_LEFT));
 #define DEF_MTODO SEND_STRING("- [ ] ");
-#define DEF_SEL_W SEND_STRING(SS_LALT(SS_TAP(X_LEFT)SS_LSFT(SS_TAP(X_RIGHT))));
 #define DEF_DEL_W SEND_STRING(SS_LALT(SS_TAP(X_LEFT)SS_TAP(X_DEL)));
+#define DEF_DLR_0 SEND_STRING("$0");
 
 #define CASE(macro) case Z_##macro: DEF_##macro return false; break;
 #define SHIFTED_CASE(macro, shifted_macro) case Z_##macro: ; const uint8_t mods = get_mods(); \

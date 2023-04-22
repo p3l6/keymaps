@@ -20,14 +20,14 @@ KC_LCTL, KC_LALT,                   KC_LGUI, MO(NAV), KC_SPC,            KC_RGUI
 
 ),[NAV] = LAYOUT(
 KC_BSPC, D_SUBWD, D_LIN_U, KC_UP,   D_EXPOS, D_CUR_U,           D_SPC_L, D_SPC_R, KC_UP,   KC_HOME, KC_PGUP, _______, _______, \
-KC_ENT,  KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_CUR_D,           D_BACK,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_PENT, \
-KC_LSFT, KC_LGUI, D_LIN_D, D_SWAP,  D_ALF_V, D_CUR_N, D_TAB_L,  D_TAB_R, __xxx__, __xxx__, __xxx__, KC_END,  __xxx__,  \
+KC_ENT,  KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_CUR_D,           D_SEL_W, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_PENT, \
+KC_LSFT, KC_LGUI, D_LIN_D, D_SWAP,  D_ALF_V, D_CUR_N, D_TAB_L,  D_TAB_R, D_BACK,  D_GOTO,  D_FRWD,  KC_END,  __xxx__,  \
 KC_LCTL, KC_LALT,                   KC_LGUI, _______, KC_SPC,            KC_RGUI,          __xxx__,          __xxx__    \
 
 
 ),[SYMB] = LAYOUT(
 KC_GRV,  KC_LT,   KC_GT,   KC_LBRC, KC_RBRC, Z_MTODO,           KC_AT,   KC_EXLM, KC_PIPE, KC_ASTR, KC_CIRC, _______, _______, \
-_______, KC_QUES, KC_DLR,  KC_LCBR, KC_RCBR, __xxx__,           KC_HASH, KC_EQL,  KC_MINS, KC_PLUS, KC_GRV,  KC_PENT, \
+_______, KC_QUES, KC_DLR,  KC_LCBR, KC_RCBR, Z_DLR_0,           KC_HASH, KC_EQL,  KC_MINS, KC_PLUS, KC_GRV,  KC_PENT, \
 KC_LSFT, __xxx__, KC_BSLS, KC_LPRN, KC_RPRN, Z_ARROW, KC_PERC,  KC_AMPR, KC_DLR,  KC_SCLN, KC_COLN, KC_BSLS, KC_RSFT,  \
 _______, _______,                   _______, _______, KC_SPC,            _______,          __xxx__,          __xxx__    \
 
@@ -41,7 +41,7 @@ _______, _______,                   _______, _______, _______,           _______
 
 ),[CODE] = LAYOUT(
 KC_ESC,  D_FORCQ, __xxx__, T_PLNXT, KC_VOLD, KC_VOLU,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, QK_BOOT, \
-__xxx__, __xxx__, Z_SEL_W, Z_DEL_W, __xxx__, __xxx__,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, \
+__xxx__, __xxx__, __xxx__, Z_DEL_W, __xxx__, __xxx__,           __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, __xxx__, \
 __xxx__, __xxx__, __xxx__, D_SSHOT, __xxx__, __xxx__, __xxx__,  __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, KC_CAPS,  \
 __xxx__, __xxx__,                   __xxx__, _______, __xxx__,           __xxx__,          __xxx__,          __xxx__    \
 
@@ -56,8 +56,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
       SHIFTED_CASE(ARROW, LGARW)
       CASE(STCMT) CASE(ENCMT)
-      CASE(SEL_W) CASE(DEL_W)
+      CASE(DEL_W)
       CASE(MTODO)
+      CASE(DLR_0)
     }
   }
   return true;
