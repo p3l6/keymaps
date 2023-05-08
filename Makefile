@@ -1,7 +1,7 @@
 .PHONY: fresh clean flash-dz60
 export QMK_HOME='./qmk_firmware'
 
-HEX_BOARDS=ca66 dz60 macropad-work bmek tokyo60 prime
+HEX_BOARDS=ca66 dz60 macropad-work bmek tokyo60 prime quefrency
 HEXES=$(patsubst %, hex/%.hex, $(HEX_BOARDS))
 all: $(HEXES)
 
@@ -31,6 +31,17 @@ hex/bmek.hex: $(BMEK) $(COMMON) | hex
 	cp qmk_firmware/bemeier_bmek_rev3_pwxn.hex $@
 flash-bmek: hex/bmek.hex
 	qmk flash -kb bemeier/bmek/rev3 -km pwxn
+
+
+QUEFRENCY = $(patsubst quefrency/%, qmk_firmware/keyboards/keebio/quefrency/keymaps/pwxn/%, $(wildcard quefrency/*))
+qmk_firmware/keyboards/keebio/quefrency/keymaps/pwxn/%: quefrency/%
+	@mkdir -p $(@D)
+	cp $< $@
+hex/quefrency.hex: $(QUEFRENCY) $(COMMON) | hex
+	qmk compile -kb keebio/quefrency/rev3 -km pwxn
+	cp qmk_firmware/keebio_quefrency_rev3_pwxn.hex $@
+flash-quefrency: hex/quefrency.hex
+	qmk flash -kb keebio/quefrency/rev3 -km pwxn
 
 
 TOKYO60 = $(patsubst tokyo60/%, qmk_firmware/keyboards/tokyokeyboard/tokyo60/keymaps/pwxn/%, $(wildcard tokyo60/*))
