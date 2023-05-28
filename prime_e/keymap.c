@@ -21,7 +21,7 @@ KC_LCTL, KC_LALT,                   KC_LGUI, MO(NAV), KC_SPC,            KC_RGUI
 ),[NAV] = LAYOUT(
 KC_BSPC, D_SUBWD, D_LIN_U, KC_UP,   D_EXPOS, D_CUR_U,           D_SPC_L, D_SPC_R, KC_UP,   KC_HOME, KC_PGUP, _______, _______, \
 KC_ENT,  KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, D_CUR_D,           D_SEL_W, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_PENT, \
-KC_LSFT, KC_LGUI, D_LIN_D, D_SWAP,  D_ALF_V, D_CUR_N, D_TAB_L,  D_TAB_R, D_BACK,  D_GOTO,  D_FRWD,  KC_END,  __xxx__,  \
+KC_LSFT, KC_LGUI, D_LIN_D, D_SWAP,  D_ALF_V, D_CUR_N, D_TAB_L,  D_TAB_R, D_BACK,  D_GOTO,  D_FRWD,  KC_END,  _______,  \
 KC_LCTL, KC_LALT,                   KC_LGUI, _______, KC_SPC,            KC_RGUI,          __xxx__,          __xxx__    \
 
 
