@@ -15,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 QK_GESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,              KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, KC_DEL, \
 LT_SYMB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,              KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,  \
 KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    OSL(NUM), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,  \
-KC_LCTL, KC_LALT,                   KC_LGUI, MO(NAV), KC_SPC,            KC_RGUI,          KC_RALT,          MO(CODE)   \
+KC_LCTL, KC_LALT,                   KC_LGUI, MO(NAV), KC_SPC,            KC_UNDS,          KC_RALT,          MO(CODE)   \
 
 
 ),[NAV] = LAYOUT(
@@ -26,8 +26,8 @@ KC_LCTL, KC_LALT,                   KC_LGUI, _______, KC_SPC,            KC_RGUI
 
 
 ),[SYMB] = LAYOUT(
-KC_GRV,  KC_LT,   KC_GT,   KC_LBRC, KC_RBRC, Z_MTODO,           KC_AT,   KC_EXLM, KC_PIPE, KC_ASTR, KC_CIRC, _______, _______, \
-_______, __xxx__, KC_DLR,  KC_LCBR, KC_RCBR, KC_UNDS,           KC_HASH, KC_EQL,  KC_MINS, KC_PLUS, KC_GRV,  KC_PENT, \
+KC_GRV,  KC_LT,   KC_GT,   KC_LBRC, KC_RBRC, Z_XTODO,           KC_AT,   KC_EXLM, KC_PIPE, KC_ASTR, KC_CIRC, _______, _______, \
+_______, KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_UNDS,           KC_HASH, KC_EQL,  KC_MINS, KC_PLUS, KC_GRV,  KC_PENT, \
 KC_LSFT, KC_QUES, KC_BSLS, KC_LPRN, KC_RPRN, Z_ARROW, KC_PERC,  KC_AMPR, KC_DLR,  KC_SCLN, KC_COLN, KC_BSLS, KC_RSFT,  \
 _______, _______,                   _______, _______, KC_SPC,            _______,          __xxx__,          __xxx__    \
 
@@ -57,7 +57,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SHIFTED_CASE(ARROW, LGARW)
       CASE(STCMT) CASE(ENCMT)
       CASE(DEL_W)
-      CASE(MTODO)
+      SHIFTED_CASE(XTODO, MTODO)
       CASE(DLR_0)
     }
   }
@@ -85,6 +85,6 @@ layer_state_t layer_state_set_user(layer_state_t state)
 }
 
 void caps_word_set_user(bool active) {
-    caps_word_enabled = active;
+    caps_word_enabled = active; // might be a builtin for this
     led_set_user(host_keyboard_leds());
 }

@@ -68,6 +68,7 @@ enum custom_keycodes {
     Z_JSSTR,
     Z_ALTTB,
     Z_MTODO,
+    Z_XTODO,
     Z_DEL_W,
     Z_DLR_0,
 };
@@ -80,13 +81,14 @@ enum custom_keycodes {
 #define DEF_SFRMT SEND_STRING("\\()"SS_TAP(X_LEFT));
 #define DEF_JSSTR SEND_STRING("``"SS_TAP(X_LEFT)"${}"SS_TAP(X_LEFT));
 #define DEF_MTODO SEND_STRING("- [ ] ");
+#define DEF_XTODO SEND_STRING("TODO: ");
 #define DEF_DEL_W SEND_STRING(SS_LALT(SS_TAP(X_LEFT)SS_TAP(X_DEL)));
 #define DEF_DLR_0 SEND_STRING("$0");
 
 #define CASE(macro) case Z_##macro: DEF_##macro return false; break;
-#define SHIFTED_CASE(macro, shifted_macro) case Z_##macro: ; const uint8_t mods = get_mods(); \
+#define SHIFTED_CASE(macro, shifted_macro) case Z_##macro: { const uint8_t mods = get_mods(); \
   if (mods & MOD_MASK_SHIFT) { del_mods(MOD_MASK_SHIFT);  DEF_##shifted_macro set_mods(mods); } \
-  else { DEF_##macro } return false; break;
+  else { DEF_##macro } return false; break; }
 
 #define OVERLOAD_MACRO(_1,_2,_3,_4,_5,NAME,...) NAME
 #define SEQ(...) OVERLOAD_MACRO(__VA_ARGS__, SEQ_FIVE_KEYS,SEQ_FOUR_KEYS,SEQ_THREE_KEYS,SEQ_TWO_KEYS,SEQ_ONE_KEY)(__VA_ARGS__)
