@@ -1,5 +1,3 @@
-#include "../../config.h"
-
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 // #define RGBLIGHT_ANIMATIONS Lets only use some of them (Static_Light is always enabled)

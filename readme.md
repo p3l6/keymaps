@@ -1,25 +1,24 @@
 # Keymaps
-This repo contains my QMK keymaps. I have extracted them due to the size and maintainability of
-storing them in the main QMK repo. Instead, the qmk firmware repository is included as a submodule.
-On build, files from this repository are copied into the submodule, and a standard build is performed.
+This repo contains my QMK keymaps.
+It uses the "External Userspace" feature, which overlays this repo contents when building.
 
-# Install dependencies and setup
-1. `brew install qmk/qmk/qmk`
-2. `make fresh`
+For maintainability, I've pinned a tag of the base repository here as a submodule, so that upgrades are not a suprise.
+
+# Setup dependencies
+1. `brew install just qmk/qmk/qmk`
+2. `just setup`
 
 # Build
-2. `make`
+1. `just build primekb/prime_e/rgb`
 
 # Installing firmware
-## Dz60
-`make flash-dz60`, then hit reset key on bottom of board
 
-## Bmek, tokyo60
-`make flash-bmek`, then hit reset key command (media + esc)
+## Basic
+`just flash primekb/prime_e/rgb`, then hit reset button, or pre-programmed reset key
 
 ## Ca66
 Plug in ca66 while holding ESC, then run
-`bootloadHID hex/ca66.hex`
+`bootloadHID hex/playkbtw_ca66_me.hex`
 Then plug in again
 
 ## Teensy

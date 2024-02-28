@@ -3,7 +3,7 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"command": "make",
+			"command": "just build-all",
 			"problemMatcher": [],
 			"label": "Make all",
 			"group": {

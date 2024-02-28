@@ -1,5 +1,3 @@
-#include "../../rev3/config.h"
-
 #define LAYOUT_65_with_macro_left_only( \
   LA1, LA2, LA3, LA4, LA5, LA6, LA7, LA8, LA9, \
   LB1, LB2, LB3, LB4, LB5, LB6, LB7, LB8,      \
