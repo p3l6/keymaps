@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 Z_ALTTB, QK_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,            KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_DEL,
 T_PLNXT, KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
 D_SLACK, LT_SYMB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_SCLN,          KC_ENT,
-D_ZOOM,  KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_UNDS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSPC, MO(_CODE),
+D_ZOOM,  SC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,            KC_UNDS, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          SC_RSPC, MO(_CODE),
                   KC_LALT, KC_LGUI,          MO(_NAV),                 KC_SPC,           KC_RGUI, KC_RCTL
 
 ),[_GRAV] = LAYOUT_hhkb(
@@ -86,11 +86,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 // TODO Maybe switch to: https://beta.docs.qmk.fm/using-qmk/hardware-features/lighting/feature_rgblight#defining-lighting-layers-id-defining-lighting-layers
-void led_set_user(uint8_t usb_led) {
+bool led_update_user(led_t led_state) {
   uint8_t mode =
     (layer_state & (1<<_NAV)) ? 1 : // Nav
     (layer_state & (1<<_SYMBL)) ? 2 : // Symb
-    (usb_led & (1 << USB_LED_CAPS_LOCK) || caps_word_enabled) ? 3 : // Caps
+    (led_state.caps_lock || caps_word_enabled) ? 3 : // Caps
     (default_layer_state & (1 << _GRAV)) ? 4 : // Grav
     (default_layer_state & (1 << _PLAIN)) ? 5 : // Plain
     (layer_state & (1 << _CODE)) ? 6 : // Code
@@ -108,18 +108,18 @@ void led_set_user(uint8_t usb_led) {
     { 215, 150,  25,  25, 150, 215 }, // Code
   };
 
-  if ( mode ) { rgblight_enable_noeeprom(); rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); } else { rgblight_disable_noeeprom(); return; }
+  if ( mode ) { rgblight_enable_noeeprom(); rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT); } else { rgblight_disable_noeeprom(); return false; }
   for (int i = 0; i < 6; i++){
     if(hue_pallets[mode][i]) {
-      sethsv(hue_pallets[mode][i], 190, 190, (LED_TYPE *)&led[i]);
+      sethsv(hue_pallets[mode][i], 190, 190, (rgb_led_t *)&led[i]);
     } else {
-      sethsv(HSV_OFF, (LED_TYPE *)&led[i]);
+      sethsv(HSV_OFF, (rgb_led_t *)&led[i]);
     }
   }
 
   if ( mode ) { rgblight_set(); }
 
-  return;
+  return false;
 }
 
 void matrix_scan_user(void) {

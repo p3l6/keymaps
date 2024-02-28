@@ -113,7 +113,7 @@ enum custom_keycodes {
 #endif
 
 // Tap dance keycodes
-#define TAP_DANCE_INIT qk_tap_dance_action_t tap_dance_actions[] = { \
+#define TAP_DANCE_INIT tap_dance_action_t tap_dance_actions[] = { \
   [0] = ACTION_TAP_DANCE_DOUBLE(KC_MPLY, KC_MFFD), \
   };
 

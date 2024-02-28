@@ -14,7 +14,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT(
 QK_GESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,              KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, KC_DEL, \
 LT_SYMB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,              KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,  \
-KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    OSL(NUM), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,  \
+SC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    OSL(NUM), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SC_RSPC,  \
 KC_LCTL, KC_LALT,                   KC_LGUI, MO(NAV), KC_SPC,            KC_UNDS,          KC_RALT,          MO(CODE)   \
 
 
@@ -71,8 +71,9 @@ void matrix_init_user(void) {
   setPinOutput(B3); writePinLow(B3);
 }
 
-void led_set_user(uint8_t usb_led) {
-  writePin(B2, IS_LED_ON(usb_led, USB_LED_CAPS_LOCK) || caps_word_enabled);
+bool led_update_user(led_t led_state) {
+  writePin(B2, led_state.caps_lock || caps_word_enabled);
+  return false;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state)
@@ -86,5 +87,5 @@ layer_state_t layer_state_set_user(layer_state_t state)
 
 void caps_word_set_user(bool active) {
     caps_word_enabled = active; // might be a builtin for this
-    led_set_user(host_keyboard_leds());
+    led_update_user(host_keyboard_led_state());
 }

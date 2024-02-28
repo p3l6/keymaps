@@ -1,4 +1,4 @@
-#include "../../config.h"
+#include "../../rev3/config.h"
 
 #define LAYOUT_65_with_macro_left_only( \
   LA1, LA2, LA3, LA4, LA5, LA6, LA7, LA8, LA9, \

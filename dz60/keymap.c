@@ -61,14 +61,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-void led_set_user(uint8_t usb_led) {
-	if ( (usb_led & (1<<USB_LED_CAPS_LOCK)) || (layer_state & (1<<_NAV)) || (layer_state & (1<<_MEDIA)) ) {
+bool led_update_user(led_t led_state) {
+	if ( led_state.caps_lock || (layer_state & (1<<_NAV)) || (layer_state & (1<<_MEDIA)) ) {
     // Turn capslock on
     writePinLow(B2);
   } else {
     // Turn capslock off
     writePinHigh(B2);
   }
+  return false;
 }
 
 void matrix_scan_user(void) {

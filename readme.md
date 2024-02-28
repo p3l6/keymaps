@@ -3,13 +3,11 @@ This repo contains my QMK keymaps. I have extracted them due to the size and mai
 storing them in the main QMK repo. Instead, the qmk firmware repository is included as a submodule.
 On build, files from this repository are copied into the submodule, and a standard build is performed.
 
-# Install dependencies
-1. `brew tap osx-cross/avr`
-2. `brew tap PX4/px4 `
-3. `brew install avr-gcc dfu-programmer gcc-arm-none-eabi avrdude`
+# Install dependencies and setup
+1. `brew install qmk/qmk/qmk`
+2. `make fresh`
 
 # Build
-1. (on a fresh clone only) `make fresh`
 2. `make`
 
 # Installing firmware
