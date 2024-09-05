@@ -1,0 +1,19 @@
+#! /bin/bash
+
+if [ -z $1 ]; then
+  echo You must supply at least one argument.
+  echo [Req] Bin filename to flash
+  echo [Opt] Volume mount location
+  exit 1
+fi
+
+FIL=$1
+VOL="/Volumes/TADA68\ \ "
+if [ ! -z $2 ]; then
+  VOL=$2
+fi
+
+set -x
+
+rm -rf "${VOL}/.fseventsd" "${VOL}/FLASH.BIN"
+cp $FIL "${VOL}/FLASH.BIN"

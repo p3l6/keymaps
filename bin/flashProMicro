@@ -1,0 +1,19 @@
+#! /bin/bash
+
+if [ -z $1 ]; then
+  echo You must supply at least one argument.
+  echo [Req] Hex filename to flash
+  echo [Opt] tty.usbmodem number, defaults to 1411
+  exit 1
+fi
+
+FIL=$1
+NUM=1411
+if [ ! -z $2 ]; then
+  NUM=$2
+fi
+
+set -x
+
+avrdude -p atmega32u4 -P /dev/tty.usbmodem$NUM  -c avr109  -U flash:w:$FIL
+
