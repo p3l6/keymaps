@@ -41,8 +41,8 @@ _______, _______,                   _______, _______, _______,           _______
 
 ),[CODE] = LAYOUT(
 KC_ESC,  D_FORCQ, __xxx__, T_PLNXT, KC_VOLD, KC_VOLU,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   __xxx__, QK_BOOT, \
-__xxx__, __xxx__, __xxx__, Z_DEL_W, __xxx__, __xxx__,           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  __xxx__, \
-__xxx__, __xxx__, __xxx__, D_SSHOT, __xxx__, __xxx__, __xxx__,  __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, KC_CAPS,  \
+__xxx__, D_AUTHR, __xxx__, Z_DEL_W, __xxx__, __xxx__,           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  __xxx__, \
+__xxx__, D_MIMAP, __xxx__, D_SSHOT, __xxx__, __xxx__, __xxx__,  __xxx__, D_DBG_C, D_DBG_N, D_DBG_S, D_DBG_O, KC_CAPS,  \
 __xxx__, __xxx__,                   __xxx__, _______, __xxx__,           __xxx__,          __xxx__,          __xxx__    \
 
 ),

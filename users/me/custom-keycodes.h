@@ -51,6 +51,8 @@
 #define D_FRWD  LGUI(LCTL(KC_RIGHT))
 #define D_GOTO  LGUI(LCTL(KC_J))
 #define D_SEL_W LGUI(LCTL(LSFT(KC_E)))
+#define D_AUTHR LGUI(LCTL(LSFT(KC_A))) // xcode toggle authors
+#define D_MIMAP LGUI(LCTL(LSFT(KC_M))) // xcode toggle minimap
 // Alfred triggers
 #define D_SLACK LALT(LCTL(KC_F1)) // alfred action to launch slack and send correct keycommand
 #define D_ZOOM  LALT(LCTL(KC_F2)) // alfred action to launch zoom and send correct keycommand

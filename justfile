@@ -30,7 +30,6 @@ clean: _move-hex
 setup:
     git submodule init
     git submodule update
-    python3 -m pip install -r qmk_firmware/requirements.txt
     make -C qmk_firmware git-submodule
     qmk setup -H ./qmk_firmware
     qmk config user.overlay_dir="$(realpath .)"
